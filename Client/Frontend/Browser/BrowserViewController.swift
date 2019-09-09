@@ -3123,6 +3123,8 @@ extension BrowserViewController: PreferencesObserver {
             setupTabs()
             updateTabsBarVisibility()
             updateApplicationShortcuts()
+            tabManager.removeAll()
+            tabManager.resetConfiguration()
         case Preferences.General.alwaysRequestDesktopSite.key:
             tabManager.reset()
             self.tabManager.reloadSelectedTab()
