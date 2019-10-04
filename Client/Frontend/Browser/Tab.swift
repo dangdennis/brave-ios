@@ -282,8 +282,9 @@ class Tab: NSObject {
     deinit {
         deleteWebView()
         contentScriptManager.helpers.removeAll()
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate,
-            let rewards = appDelegate.browserViewController.rewards else { return }
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        
+        let rewards = appDelegate.browserViewController.rewards
         
         if !PrivateBrowsingManager.shared.isPrivateBrowsing {
             rewards.reportTabClosed(tabId: rewardsId)
